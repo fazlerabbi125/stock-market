@@ -8,7 +8,15 @@ from .forms import StockForm
 from .models import Stock
 from .filters import StockFilter
 from django.contrib import messages
-# Create your views here.request
+from csv import DictReader
+
+def load(request):
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    file=open(f'{BASE_DIR}/janata_stock.csv')
+    csv=DictReader(f)
+    file.close()
+    return redirect('janata:home')
+# Create your views here.
 def jsonlist(request):
     # Build paths inside the project like this: BASE_DIR / 'subdir'.
     BASE_DIR = Path(__file__).resolve().parent.parent

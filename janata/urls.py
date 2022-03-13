@@ -19,6 +19,7 @@ from .views import *
 from django.views.generic import TemplateView
 app_name="janata"
 urlpatterns = [
+    path('load/', load, name='load'),
     path('', StockListView.as_view(), name='home'),
     path('json-home/', jsonlist, name='jsonView'),
     path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
