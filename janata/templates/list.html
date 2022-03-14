@@ -119,7 +119,7 @@
                   <ul class="pagination justify-content-center">
                   {% if page_obj.has_previous %}
                   <li class="page-item">
-                    <a class="page-link " href="?page=1{% if querystring %}&amp;{{ querystring }}{% endif %}" aria-label="Previous">
+                    <a class="page-link " href="{% url 'janata:home' %}{% if querystring %}?{{ querystring }}{% endif %}" aria-label="Previous">
                       <span aria-hidden="true">&laquo;</span>
                       <span class="sr-only">first page</span>
                     </a>
