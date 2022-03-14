@@ -19,8 +19,21 @@ from .views import *
 from django.views.generic import TemplateView
 app_name="janata"
 
+from csv import DictReader
+from django.http import HttpResponse
+from django.utils.dateparse import parse_date
+def load(request):
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    file=open(f'{BASE_DIR}/janata_stock.csv')
+    c=DictReader(file)
+    for row in c:
+        Stock.objects.create(trade_code=row['trade_code'],date=parse_date(row['date']),high=row['high'],
+        low=row['low'],open=row['open'],close=row['close'],volume=row['volume'])
+
+    return HttpResponse('success')
 urlpatterns = [
     path('', StockListView.as_view(), name='home'),
+    path('load/', load, ),
     path('json-home/', jsonlist, name='jsonView'),
     path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
     path('stock/add/', addStock, name='add'),
