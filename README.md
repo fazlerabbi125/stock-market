@@ -1,3 +1,3 @@
 # stock-market
 
-Link:
+App Link: https://faiyaz-stock-market.herokuapp.com/
