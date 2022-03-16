@@ -86,7 +86,8 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
+# After going the directory with the sql data file and removing unncessary statements and syntax of sql file, import the table to the heroku postgresql database 
+# using the command:  heroku pg:psql --app APP_NAME < filename.sql
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
